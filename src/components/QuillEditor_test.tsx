@@ -1,67 +1,74 @@
-'use client'
+'use client';
 
 import Quill from 'quill';
-import React, { forwardRef, useEffect, useLayoutEffect, useRef } from 'react';
-import 'quill/dist/quill.snow.css'; // Include stylesheet
+import { forwardRef, useEffect, useLayoutEffect, useRef } from 'react';
+import 'quill/dist/quill.snow.css';
+import { Delta } from 'quill-delta';
 
+// Props 타입 정의
+interface EditorProps {
+  readOnly?: boolean;
+  defaultValue?: Delta;
+  onTextChange?: (...args: any[]) => void;
+  onSelectionChange?: (...args: any[]) => void;
+}
 
-// Editor is an uncontrolled React component
-const Editor = forwardRef(
-  ({ readOnly, defaultValue, onTextChange, onSelectionChange }, ref) => {
-    const containerRef = useRef(null);
-    const defaultValueRef = useRef(defaultValue);
-    const onTextChangeRef = useRef(onTextChange);
-    const onSelectionChangeRef = useRef(onSelectionChange);
+// Editor 컴포넌트
+const Editor = forwardRef<Quill, EditorProps>(
+  ({ readOnly = false, defaultValue, onTextChange, onSelectionChange }, ref) => {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const defaultValueRef = useRef<Delta | undefined>(defaultValue);
+    const onTextChangeRef = useRef<((...args: any[]) => void) | undefined>(onTextChange);
+    const onSelectionChangeRef = useRef<((...args: any[]) => void) | undefined>(onSelectionChange);
 
+    // 콜백 업데이트
     useLayoutEffect(() => {
       onTextChangeRef.current = onTextChange;
       onSelectionChangeRef.current = onSelectionChange;
     });
 
+    // readOnly 상태 업데이트
     useEffect(() => {
-        if(ref) {
-            ref.current?.enable(!readOnly);
-
-        }
+      if (ref) {
+        ref.current?.enable(!readOnly);
+      }
     }, [ref, readOnly]);
 
+    // 툴바 설정
     const toolbarOptions = [
-      ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+      ['bold', 'italic', 'underline', 'strike'],
       ['blockquote', 'code-block'],
       ['link', 'image', 'video', 'formula'],
-    
-      [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
-      [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-      [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-      [{ 'direction': 'rtl' }],                         // text direction
-    
-      [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-    
-      [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-      [{ 'font': [] }],
-      [{ 'align': [] }],
-    
-      ['clean']                                         // remove formatting button
+      [{ header: 1 }, { header: 2 }],
+      [{ list: 'ordered' }, { list: 'bullet' }, { list: 'check' }],
+      [{ script: 'sub' }, { script: 'super' }],
+      [{ indent: '-1' }, { indent: '+1' }],
+      [{ direction: 'rtl' }],
+      [{ size: ['small', false, 'large', 'huge'] }],
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      [{ color: [] }, { background: [] }],
+      [{ font: [] }],
+      [{ align: [] }],
+      ['clean'],
     ];
 
+    // Quill 초기화
     useEffect(() => {
       const container = containerRef.current;
+      if (!container) return;
+
       const editorContainer = container.appendChild(
         container.ownerDocument.createElement('div'),
       );
-      const quill = new Quill (editorContainer, {
-        theme: 'snow', 
+      const quill = new Quill(editorContainer, {
+        theme: 'snow',
         modules: {
-          toolbar: toolbarOptions
-        }
+          toolbar: toolbarOptions,
+        },
       });
-
 
       if (ref) {
         ref.current = quill;
-
       }
 
       if (defaultValueRef.current) {
@@ -81,11 +88,10 @@ const Editor = forwardRef(
           ref.current = null;
           container.innerHTML = '';
         }
-       
       };
     }, [ref]);
 
-    return <div ref={containerRef}></div>;
+    return <div ref={containerRef} />;
   },
 );
 
