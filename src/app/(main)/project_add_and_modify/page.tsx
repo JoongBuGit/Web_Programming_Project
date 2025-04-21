@@ -15,9 +15,9 @@ export default function page() {
     window.history.back()
   }
 
-  const thumbnaim_upload = () => {
-    alert("업로드 성공")
-  }
+  // const thumbnaim_upload = () => {
+  //   alert("업로드 성공")
+  // }
 
 
   // 서버로 보내는 Fetch 코드
@@ -41,10 +41,10 @@ export default function page() {
       // .then(response => {
       //   console.log("성공", response)
       // })
-      .catch((error) => {
-        // 에러코드 로그
-        // console.error('Error:', error);
-      });
+      // .catch((error) => {
+      //   // 에러코드 로그
+      //   // console.error('Error:', error);
+      // });
   };
 
   // 서버로 보내는 Fetch 코드
