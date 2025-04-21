@@ -108,7 +108,7 @@ export default function Page() {
 
 
 
-            <Project_List_Item key={index} id={data.id} />
+            // <Project_List_Item key={index} id={data.id} />
 
             // <div key={index}>data : {data.id}</div>
           ))
