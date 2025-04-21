@@ -103,7 +103,7 @@ export default function Page() {
       {/* <Buttion onClick={() => { alert(list_num_ref.current) }}>버튼</Buttion> */}
 
       <div>
-        {
+{/*         {
           projectList.map((data, index) => (
 
 
@@ -113,7 +113,7 @@ export default function Page() {
             // <div key={index}>data : {data.id}</div>
           ))
 
-        }
+        } */}
 
       </div>
 
