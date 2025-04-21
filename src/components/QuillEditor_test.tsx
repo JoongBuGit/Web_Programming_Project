@@ -3,7 +3,9 @@
 import Quill from 'quill';
 import { forwardRef, useEffect, useLayoutEffect, useRef } from 'react';
 import 'quill/dist/quill.snow.css';
-import { Delta } from 'quill-delta';
+// import { Delta } from 'quill-delta';
+import  Delta  from 'quill-delta';
+
 
 // Props 타입 정의
 interface EditorProps {
