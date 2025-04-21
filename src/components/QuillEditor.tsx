@@ -2,14 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react';
 import 'quill/dist/quill.snow.css';
-import Quill from 'quill';
+import Quill, { Delta } from 'quill';
 import Button from './Button/Button';
 import Link from 'next/link';
-
-// Quill Delta 타입 (quill 라이브러리에서 제공)
-interface Delta {
-  ops: Array<{ insert: any; attributes?: any }>;
-}
 
 interface QuillEditorProps {
   onSubmit: (data: { blog_description: string }) => void;
@@ -59,7 +54,7 @@ const QuillEditor = ({ onSubmit, state, delta }: QuillEditorProps) => {
     return () => {
       quillInstance.disable();
     };
-  }, [state, delta]);
+  }, [state, delta, toolbarOptions]);
 
   // Post 버튼 클릭 시 데이터 전송
   const handleSubmit = () => {
