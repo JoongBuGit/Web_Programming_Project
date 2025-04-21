@@ -1,7 +1,7 @@
 'use client';
 
 import Quill from 'quill';
-import { forwardRef, useEffect, useLayoutEffect, useRef, Ref } from 'react';
+import { forwardRef, useEffect, useLayoutEffect, useRef, MutableRefObject } from 'react';
 import 'quill/dist/quill.snow.css';
 import Delta from 'quill-delta';
 
@@ -14,10 +14,10 @@ interface EditorProps {
 }
 
 // Editor 컴포넌트
-const Editor = forwardRef<Quill | null, EditorProps>(
+const Editor = forwardRef<Quill, EditorProps>(
   (
     { readOnly = false, defaultValue, onTextChange, onSelectionChange },
-    ref: Ref<Quill>, // ref 타입을 Ref<Quill>로 변경
+    ref: MutableRefObject<Quill | null> | null, // ref 타입을 명시적으로 지정
   ) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const defaultValueRef = useRef<Delta | undefined>(defaultValue);
@@ -33,7 +33,7 @@ const Editor = forwardRef<Quill | null, EditorProps>(
     // readOnly 상태 업데이트
     useEffect(() => {
       if (ref && 'current' in ref) {
-        (ref as MutableRefObject<Quill | null>).current?.enable(!readOnly);
+        ref.current?.enable(!readOnly);
       }
     }, [ref, readOnly]);
 
@@ -71,7 +71,7 @@ const Editor = forwardRef<Quill | null, EditorProps>(
       });
 
       if (ref && 'current' in ref) {
-        (ref as MutableRefObject<Quill | null>).current = quill;
+        ref.current = quill;
       }
 
       if (defaultValueRef.current) {
@@ -88,7 +88,7 @@ const Editor = forwardRef<Quill | null, EditorProps>(
 
       return () => {
         if (ref && 'current' in ref) {
-          (ref as MutableRefObject<Quill | null>).current = null;
+          ref.current = null;
           container.innerHTML = '';
         }
       };
