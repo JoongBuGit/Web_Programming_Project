@@ -21,31 +21,31 @@ export default function page() {
 
 
   // 서버로 보내는 Fetch 코드
-  // const handleSubmit = (jsonDelta) => {
-  //   // AJAX 요청
-  //   fetch("http://localhost:8080/createPortfolio", {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //       // 'Content-Type': 'text/plain;charset=UTF-8'
-  //     },
-  //     body: jsonDelta
-  //     // body: json_string
+  const handleSubmit = (jsonDelta) => {
+    // AJAX 요청
+    // fetch("http://localhost:8080/createPortfolio", {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //     // 'Content-Type': 'text/plain;charset=UTF-8'
+    //   },
+    //   body: jsonDelta
+    //   // body: json_string
 
 
-  //   })
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       console.log('Success:', data);
-  //     })
-  //     // .then(response => {
-  //     //   console.log("성공", response)
-  //     // })
-  //     // .catch((error) => {
-  //     //   // 에러코드 로그
-  //     //   // console.error('Error:', error);
-  //     // });
-  // };
+    // })
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     console.log('Success:', data);
+    //   })
+      // .then(response => {
+      //   console.log("성공", response)
+      // })
+      // .catch((error) => {
+      //   // 에러코드 로그
+      //   // console.error('Error:', error);
+      // });
+  };
 
   // 서버로 보내는 Fetch 코드
   // const handleSubmit_test = (jsonDelta) => {
