@@ -79,7 +79,7 @@ export default function page() {
      
 
       <div>
-        <QuillEditor onSubmit={handleSubmit} state={"editor"} delta={""} />
+{/*         <QuillEditor onSubmit={handleSubmit} state={"editor"} delta={""} /> */}
         <Buttion onClick={cancel}>Cancel</Buttion>
 
         {/* <Buttion onClick={upload}>upload</Buttion> */}
