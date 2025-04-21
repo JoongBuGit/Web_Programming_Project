@@ -21,7 +21,7 @@ export default function page() {
 
 
   // 서버로 보내는 Fetch 코드
-  const handleSubmit = (jsonDelta) => {
+  const handleSubmit = () => {
     // AJAX 요청
     // fetch("http://localhost:8080/createPortfolio", {
     //   method: 'POST',
