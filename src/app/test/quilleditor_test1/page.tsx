@@ -34,7 +34,7 @@ export default function QuillEditor_test1() {
 
     return (
         <div>
-            <QuillEditor onSubmit={handleSubmit} />
+{/*             <QuillEditor onSubmit={handleSubmit} /> */}
         </div>
 
     )
