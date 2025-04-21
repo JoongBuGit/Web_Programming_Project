@@ -1,11 +1,9 @@
 'use client';
 
 import Quill from 'quill';
-import { forwardRef, useEffect, useLayoutEffect, useRef } from 'react';
+import { forwardRef, useEffect, useLayoutEffect, useRef, MutableRefObject } from 'react';
 import 'quill/dist/quill.snow.css';
-// import { Delta } from 'quill-delta';
-import  Delta  from 'quill-delta';
-
+import Delta from 'quill-delta';
 
 // Props 타입 정의
 interface EditorProps {
@@ -17,7 +15,10 @@ interface EditorProps {
 
 // Editor 컴포넌트
 const Editor = forwardRef<Quill, EditorProps>(
-  ({ readOnly = false, defaultValue, onTextChange, onSelectionChange }, ref) => {
+  (
+    { readOnly = false, defaultValue, onTextChange, onSelectionChange },
+    ref: MutableRefObject<Quill | null> | null, // ref 타입을 명시적으로 제한
+  ) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const defaultValueRef = useRef<Delta | undefined>(defaultValue);
     const onTextChangeRef = useRef<((...args: any[]) => void) | undefined>(onTextChange);
@@ -27,7 +28,7 @@ const Editor = forwardRef<Quill, EditorProps>(
     useLayoutEffect(() => {
       onTextChangeRef.current = onTextChange;
       onSelectionChangeRef.current = onSelectionChange;
-    });
+    }, [onTextChange, onSelectionChange]);
 
     // readOnly 상태 업데이트
     useEffect(() => {
@@ -91,7 +92,7 @@ const Editor = forwardRef<Quill, EditorProps>(
           container.innerHTML = '';
         }
       };
-    }, [ref]);
+    }, [ref, toolbarOptions]); // toolbarOptions 추가
 
     return <div ref={containerRef} />;
   },
