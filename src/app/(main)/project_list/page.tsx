@@ -95,9 +95,9 @@ export default function Page() {
 
       </div>
 
-      <div className=" div_btn">
+{/*       <div className=" div_btn">
         <Link href="/project_add_and_modify"><Buttion onClick={() => { }}>New Project</Buttion></Link>
-      </div>
+      </div> */}
 
 
       {/* <Buttion onClick={() => { alert(list_num_ref.current) }}>버튼</Buttion> */}
