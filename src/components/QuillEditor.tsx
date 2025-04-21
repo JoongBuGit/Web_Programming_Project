@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import 'quill/dist/quill.snow.css';
-import Quill, { Delta } from 'quill';
+import Quill from 'quill';
+import { Delta } from 'quill-delta';
 import Button from './Button/Button';
 import Link from 'next/link';
 
