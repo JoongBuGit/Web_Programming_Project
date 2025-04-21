@@ -1,7 +1,7 @@
 'use client';
 
 import Quill from 'quill';
-import { forwardRef, useEffect, useLayoutEffect, useRef, ForwardedRef } from 'react';
+import { forwardRef, useEffect, useLayoutEffect, useRef, ForwardedRef, useMemo } from 'react';
 import 'quill/dist/quill.snow.css';
 import Delta from 'quill-delta';
 
@@ -37,23 +37,26 @@ const Editor = forwardRef<Quill, EditorProps>(
       }
     }, [ref, readOnly]);
 
-    // 툴바 설정
-    const toolbarOptions = [
-      ['bold', 'italic', 'underline', 'strike'],
-      ['blockquote', 'code-block'],
-      ['link', 'image', 'video', 'formula'],
-      [{ header: 1 }, { header: 2 }],
-      [{ list: 'ordered' }, { list: 'bullet' }, { list: 'check' }],
-      [{ script: 'sub' }, { script: 'super' }],
-      [{ indent: '-1' }, { indent: '+1' }],
-      [{ direction: 'rtl' }],
-      [{ size: ['small', false, 'large', 'huge'] }],
-      [{ header: [1, 2, 3, 4, 5, 6, false] }],
-      [{ color: [] }, { background: [] }],
-      [{ font: [] }],
-      [{ align: [] }],
-      ['clean'],
-    ];
+    // 툴바 설정 (useMemo로 최적화)
+    const toolbarOptions = useMemo(
+      () => [
+        ['bold', 'italic', 'underline', 'strike'],
+        ['blockquote', 'code-block'],
+        ['link', 'image', 'video', 'formula'],
+        [{ header: 1 }, { header: 2 }],
+        [{ list: 'ordered' }, { list: 'bullet' }, { list: 'check' }],
+        [{ script: 'sub' }, { script: 'super' }],
+        [{ indent: '-1' }, { indent: '+1' }],
+        [{ direction: 'rtl' }],
+        [{ size: ['small', false, 'large', 'huge'] }],
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        [{ color: [] }, { background: [] }],
+        [{ font: [] }],
+        [{ align: [] }],
+        ['clean'],
+      ],
+      [],
+    );
 
     // Quill 초기화
     useEffect(() => {
@@ -102,7 +105,7 @@ const Editor = forwardRef<Quill, EditorProps>(
 
     return <div ref={containerRef} />;
   },
-) as React.ForwardRefRenderFunction<Quill, EditorProps>; // 명시적 타입 캐스팅
+);
 
 Editor.displayName = 'Editor';
 
