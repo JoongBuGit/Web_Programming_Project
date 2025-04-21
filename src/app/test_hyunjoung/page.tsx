@@ -4,7 +4,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect } from 'react'
 
-import "@/app/test/page.css"
+//import "@/app/test/page.css"
+import "@/app/test_hyunjoung/page.css"
+
 
 export default function page() {
 
