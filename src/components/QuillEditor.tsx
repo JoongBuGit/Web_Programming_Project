@@ -78,7 +78,7 @@ const QuillEditor = ({ onSubmit, state, delta }: QuillEditorProps) => {
       <div ref={quillRef} style={{ height: '600px' }} />
       {state === 'editor' && (
         <Link href="/project_list">
-          <Button onClick={handleSubmit} idname="quill_button">
+{/*           <Button onClick={handleSubmit} idname="quill_button"> */}
             Post
           </Button>
         </Link>
