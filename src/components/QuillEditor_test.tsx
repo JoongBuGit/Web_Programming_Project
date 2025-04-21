@@ -17,7 +17,7 @@ interface EditorProps {
 const Editor = forwardRef<Quill, EditorProps>(
   (
     { readOnly = false, defaultValue, onTextChange, onSelectionChange },
-    ref: ForwardedRef<Quill>, // ref 타입을 ForwardedRef<Quill>로 변경
+    ref: ForwardedRef<Quill>,
   ) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const defaultValueRef = useRef<Delta | undefined>(defaultValue);
