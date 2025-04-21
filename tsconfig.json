@@ -20,7 +20,10 @@
     ],
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    // 추가: 타입 정의 호환성 개선
+    "forceConsistentCasingInFileNames": true,
+    "strictNullChecks": false // strict: false와 일관되게 유지
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
