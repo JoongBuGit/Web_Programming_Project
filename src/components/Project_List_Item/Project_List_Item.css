@@ -1,0 +1,55 @@
+.item_container {
+    /* margin-top: 30px;
+    margin-bottom: 30px; */
+    /* padding-bottom: 20px; */
+    background-color: brown;
+}
+
+
+.clear {
+    clear: both;
+}
+
+.div_btn {
+    overflow: auto;
+}
+
+
+#project_div {
+    font-weight: 600;
+    background-color: beige;
+    text-align: center;
+
+}
+
+#project_image {
+    float: right;
+}
+
+/* 여기가 밑에 리스트들 css */
+
+.thumbnail_left {
+    float: left;
+}
+
+.text_of_thumbnail {
+    width: 400px;
+}
+
+.thumbnail_right {
+    float: right;
+}
+
+
+/* 썸네일 이미지와 텍스트의 스타일 */
+#description {
+    width: 300px;
+    /* 너비 설정 */
+    height: 100px;
+    /* 높이 설정 */
+    padding: 10px;
+    /* 내부 여백 */
+    font-size: 13px;
+    /* 글자 크기 */
+}
+

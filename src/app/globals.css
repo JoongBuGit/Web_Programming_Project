@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Header 부분 */
+/* navbar 글자와 페딩 설정 */
+#navbar { 
+  height: 100px;
+  font-size: large;
+  font-weight: 600;
+  color: #333;
+  padding-left: 50px;
+  padding-right: 50px;
+  /* background-color: #F5F5DC; */
+}
+/* float 뒤에 나오는 컨텐츠와의 중복을 막는 의사 요소 */
+#navbar::after {
+  /* background-color: blue; */
+  display: block;
+  content: "";
+  clear: both;
+}
+
+/* navbar 왼쪽에 있는 사이트 홈 이미지 */
+#navbar .navbar_left { 
+  /* background-color: rgb(219, 51, 51); */
+  float: left;
+  height: inherit;
+  align-content: center;
+  text-align: center;
+}
+
+#navbar .navbar_left .navbar_left_Link :hover { 
+  transition: all 1s;
+  transform: rotate(180deg);
+}
+
+
+
+/* navbar 오른쪽에 있는 메뉴들 */
+#navbar nav {
+  height: inherit;
+  /* background-color: rgb(40, 10, 129); */
+}
+/* navbar 오른쪽에 있는 메뉴들 */
+#navbar nav ul {
+  height: inherit;
+  /* background-color: rgb(40, 35, 28); */
+  float: right;
+  align-content: center;
+}
+
+/* navbar 오른쪽에 있는 메뉴들 각각 */
+#navbar nav ul li {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 15px;
+  margin-left: 10px;
+  /* background-color: rgb(181, 103, 103); */
+  display: inline-block;
+  position: relative;
+  
+}
+
+#navbar nav ul li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: 2px;
+  background-color: #6383ef;
+  transform: scale(0);
+  transition: transform 0.3s;
+}
+
+#navbar nav ul li:hover::after  {
+  background-color: #6383ef;
+  transform: scale(1)
+}
+
+
+/* Footer 부분 */
+.footer {
+  clear: both;
+  display: flex;
+  background-color: #333; /* 어두운 회색 배경 */
+  color: #fff; /* 흰색 텍스트 */
+  padding: 20px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  justify-content: center;
+  margin-top: 60px;
+}
+.footer-links {
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+.footer-links li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.footer-links a {
+  color: #fff; /* 링크 색상 */
+  text-decoration: none;
+}
+.footer-links a:hover {
+  text-decoration: underline; /* 마우스 오버 시 밑줄 */
+}
+.footer-links-li-github {
+  justify-content: center;
+  display: inline;
+}
+.footer-links-li-github-icon {
+    margin-right: 5px;
+    display: inline;
+}
+
+
+/* pages 레이아웃 */
+.pages {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+
+/* 기본 페이지 css */
+h1 {
+  font-weight: 600;
+  font-size: 50px;
+  text-align: center;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+
+
+
+
+
+
