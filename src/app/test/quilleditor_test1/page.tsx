@@ -14,20 +14,20 @@ export default function QuillEditor_test1() {
        // jsonDelta
     ) => {
         // AJAX 요청
-        fetch("http://localhost:8080/createPortfolio", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: jsonDelta
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+        // fetch("http://localhost:8080/createPortfolio", {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: jsonDelta
+        // })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         console.log('Success:', data);
+        //     })
+        //     .catch((error) => {
+        //         console.error('Error:', error);
+        //     });
     };
 
 
