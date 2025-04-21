@@ -102,7 +102,7 @@ const Editor = forwardRef<Quill, EditorProps>(
 
     return <div ref={containerRef} />;
   },
-);
+) as React.ForwardRefRenderFunction<Quill, EditorProps>; // 명시적 타입 캐스팅
 
 Editor.displayName = 'Editor';
 
