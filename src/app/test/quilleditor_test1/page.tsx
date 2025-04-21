@@ -10,7 +10,9 @@ import React, { useRef } from 'react'
 
 export default function QuillEditor_test1() {
 
-    const handleSubmit = (jsonDelta) => {
+    const handleSubmit = (
+       // jsonDelta
+    ) => {
         // AJAX 요청
         fetch("http://localhost:8080/createPortfolio", {
             method: 'POST',
